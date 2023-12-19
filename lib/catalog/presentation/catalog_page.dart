@@ -8,8 +8,8 @@ import '../domain/usecase/get_products_list.dart';
 import 'bloc/catalog_cubit.dart';
 import 'widgets/body.dart';
 
-class CatalogScreen extends StatelessWidget {
-  const CatalogScreen({super.key});
+class CatalogPage extends StatelessWidget {
+  const CatalogPage({super.key});
 
   @override
   Widget build(BuildContext context) {

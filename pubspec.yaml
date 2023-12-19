@@ -16,6 +16,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
+  js: ^0.6.7
   json_annotation: ^4.8.1
 
 dev_dependencies:
