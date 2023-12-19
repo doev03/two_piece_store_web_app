@@ -1,0 +1,13 @@
+class CatalogItemEntity {
+  const CatalogItemEntity({
+    required this.id,
+    required this.name,
+    required this.price,
+    required this.images,
+  });
+
+  final String id;
+  final String name;
+  final double price;
+  final List<String> images;
+}
