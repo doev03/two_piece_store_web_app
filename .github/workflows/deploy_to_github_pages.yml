@@ -18,4 +18,4 @@ jobs:
       - uses: bluefireteam/flutter-gh-pages@v7
         with:
           webRenderer: canvaskit
-          baseHref: /two_piece_store_web_app_flutter/
+          baseHref: /two_piece_store_web_app/
