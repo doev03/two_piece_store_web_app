@@ -11,10 +11,9 @@ class PageBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
 
     return Material(
-      color: colorScheme.background,
+      color: theme.scaffoldBackgroundColor,
       child: child,
     );
   }

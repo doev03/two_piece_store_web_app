@@ -43,8 +43,8 @@ class AppView extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData.light().copyWith(
-                primaryColor: themeParams.bgColor.toColor(),
-                scaffoldBackgroundColor: themeParams.secondaryBgColor.toColor(),
+                primaryColor: themeParams.buttonColor.toColor(),
+                scaffoldBackgroundColor: themeParams.bgColor.toColor(),
                 elevatedButtonTheme: ElevatedButtonThemeData(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: themeParams.buttonColor.toColor(),
@@ -69,8 +69,8 @@ class AppView extends StatelessWidget {
                 ),
               ),
               darkTheme: ThemeData.dark().copyWith(
-                primaryColor: themeParams.bgColor.toColor(),
-                scaffoldBackgroundColor: themeParams.secondaryBgColor.toColor(),
+                primaryColor: themeParams.buttonColor.toColor(),
+                scaffoldBackgroundColor: themeParams.bgColor.toColor(),
                 elevatedButtonTheme: ElevatedButtonThemeData(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: themeParams.buttonColor.toColor(),
