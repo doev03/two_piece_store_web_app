@@ -7,11 +7,11 @@ import 'web_app_user.dart';
 
 /// https://core.telegram.org/bots/webapps#webappinitdata
 @JS()
-class WebAppInitDataDTO {
+class WebAppInitData {
   external String? get query_id;
-  external WebAppUserDTO? get user;
-  external WebAppUserDTO? get receiver;
-  external WebAppChatDTO? get chat;
+  external WebAppUser? get user;
+  external WebAppUser? get receiver;
+  external WebAppChat? get chat;
   external String? get chat_type;
   external String? get chat_instance;
   external String? get start_param;

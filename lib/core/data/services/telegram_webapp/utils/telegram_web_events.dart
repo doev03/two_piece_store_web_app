@@ -1,7 +1,8 @@
-import '../../../dto/theme_params.dart';
+
+import '../models/theme_params.dart';
 
 typedef ViewPortListener = Function(bool isStable, double height, double stableHeight);
-typedef ThemeChangeListener = Function(bool isDarkMode, WebAppThemeParamsDTO params);
+typedef ThemeChangeListener = Function(bool isDarkMode, WebAppThemeParams params);
 
 class TelegramWebEvent {
 /*  /// Event listeners for Telegram WebViewPort Changes

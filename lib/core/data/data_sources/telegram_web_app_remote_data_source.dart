@@ -1,8 +1,5 @@
-import '../dto/telegram_back_button.dart';
-import '../dto/telegram_haptic_feedback.dart';
-import '../dto/telegram_main_button.dart';
-import '../dto/theme_params.dart';
-import '../dto/web_app_init_data.dart';
+
+import '../dto/web_app_theme_params.dart';
 
 abstract class TelegramWebAppRemoteDataSource {
   String get initData;
@@ -26,14 +23,6 @@ abstract class TelegramWebAppRemoteDataSource {
   double? get viewportStableHeight;
 
   WebAppThemeParamsDTO get themeParams;
-
-  TelegramBackButtonDTO get BackButton;
-
-  TelegramMainButtonDTO get MainButton;
-
-  WebAppInitDataDTO get initDataUnsafe;
-
-  TelegramHapticFeedbackDTO get HapticFeedback;
 
   Future<void> ready();
 

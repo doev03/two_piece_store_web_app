@@ -1,127 +1,118 @@
-@JS('Telegram')
-library telegram_web_app;
-
-import 'package:js/js.dart';
-
-import '../dto/telegram_back_button.dart';
-import '../dto/telegram_haptic_feedback.dart';
-import '../dto/telegram_main_button.dart';
-import '../dto/theme_params.dart';
-import '../dto/web_app_init_data.dart';
+import '../dto/web_app_theme_params.dart';
+import '../services/telegram_webapp/telegram_web_app.dart' as tg;
 import 'telegram_web_app_remote_data_source.dart';
 
-@JS('WebApp')
 class TelegramWebAppRemoteDataSourceImpl implements TelegramWebAppRemoteDataSource {
   /// Getters for properties
   ///
   @override
-  external String get initData;
+  String get initData => tg.initData;
 
   @override
-  external String get version;
+  String get version => tg.version;
 
   @override
-  external String get platform;
+  String get platform => tg.platform;
 
   @override
-  external String get colorScheme;
+  String get colorScheme => tg.colorScheme;
 
   @override
-  external String get headerColor;
+  String get headerColor => tg.headerColor;
 
   @override
-  external String get backgroundColor;
+  String get backgroundColor => tg.backgroundColor;
 
   @override
-  external bool get isClosingConfirmationEnabled;
+  bool get isClosingConfirmationEnabled => tg.isClosingConfirmationEnabled;
 
   @override
-  external bool get isExpanded;
+  bool get isExpanded => tg.isExpanded;
 
   @override
-  external double? get viewportHeight;
+  double? get viewportHeight => tg.viewportHeight;
 
   @override
-  external double? get viewportStableHeight;
+  double? get viewportStableHeight => tg.viewportStableHeight;
 
   /// Getters for classes and objects
   ///
   @override
-  external WebAppThemeParamsDTO get themeParams;
-
-  @override
-  external TelegramBackButtonDTO get BackButton;
-
-  @override
-  external TelegramMainButtonDTO get MainButton;
-
-  @override
-  external WebAppInitDataDTO get initDataUnsafe;
-
-  @override
-  external TelegramHapticFeedbackDTO get HapticFeedback;
+  WebAppThemeParamsDTO get themeParams {
+    final data = tg.themeParams;
+    return WebAppThemeParamsDTO(
+      bgColor: data.bg_color,
+      textColor: data.text_color,
+      hintColor: data.hint_color,
+      linkColor: data.link_color,
+      buttonColor: data.button_color,
+      buttonTextColor: data.button_text_color,
+      secondaryBgColor: data.secondary_bg_color,
+    );
+  }
 
   /// Functions
   ///
   @override
-  external Future<void> ready();
+  Future<void> ready() => tg.ready();
 
   @override
-  external Future<void> expand();
+  Future<void> expand() => tg.expand();
 
   @override
-  external Future<void> close();
+  Future<void> close() => tg.close();
 
   @override
-  external Future<void> enableClosingConfirmation();
+  Future<void> enableClosingConfirmation() => tg.enableClosingConfirmation();
 
   @override
-  external Future<void> disableClosingConfirmation();
+  Future<void> disableClosingConfirmation() => tg.disableClosingConfirmation();
 
   @override
-  external Future<void> sendData(dynamic data);
+  Future<void> sendData(dynamic data) => tg.sendData(data);
 
   @override
-  external Future<void> isVersionAtLeast(version);
+  Future<void> isVersionAtLeast(version) => tg.isVersionAtLeast(version);
 
   @override
-  external Future<void> setHeaderColor(String color);
+  Future<void> setHeaderColor(String color) => tg.setHeaderColor(color);
 
   @override
-  external Future<void> setBackgroundColor(String color);
+  Future<void> setBackgroundColor(String color) => tg.setBackgroundColor(color);
 
   @override
-  external Future<void> switchInlineQuery(query, [choose_chat_types]);
+  Future<void> switchInlineQuery(query, [chooseChatTypes]) =>
+      tg.switchInlineQuery(query, chooseChatTypes);
 
   @override
-  external Future<void> openLink(url, [options]);
+  Future<void> openLink(url, [options]) => tg.openLink(url, options);
 
   @override
-  external Future<void> openTelegramLink(String url);
+  Future<void> openTelegramLink(String url) => tg.openTelegramLink(url);
 
   @override
-  external Future<void> openInvoice(String url, [JsCallback]);
+  Future<void> openInvoice(String url, [JsCallback]) => tg.openInvoice(url, JsCallback);
 
   @override
-  external Future<void> readTextFromClipboard(JsCallback);
+  Future<void> readTextFromClipboard(JsCallback) => tg.readTextFromClipboard(JsCallback);
 
   ///Dialogs
   ///
   /// use [TelegramPopup.show()] to show the popup, instead of this method directly
   @override
-  external Future<void> showPopup(Record param, [JsCallback]);
+  Future<void> showPopup(Record param, [JsCallback]) => tg.showPopup(param, JsCallback);
 
   @override
-  external Future<void> showAlert(String message, [JsCallback]);
+  Future<void> showAlert(String message, [JsCallback]) => tg.showAlert(message, JsCallback);
 
   @override
-  external Future<void> showConfirm(String message, [JsCallback]);
+  Future<void> showConfirm(String message, [JsCallback]) => tg.showConfirm(message, JsCallback);
 
   @override
-  external Future<void> showScanQrPopup(Record params, [JsCallback]);
+  Future<void> showScanQrPopup(Record params, [JsCallback]) => tg.showScanQrPopup(params);
 
   @override
-  external Future<void> closeScanQrPopup();
+  Future<void> closeScanQrPopup() => tg.closeScanQrPopup();
 
   ///Events
   ///
@@ -129,8 +120,8 @@ class TelegramWebAppRemoteDataSourceImpl implements TelegramWebAppRemoteDataSour
   /// use [TelegramWebEventType] to get the event names, and use [JsVoidCallback] for callbacks
   /// or if any callback requires a return value, use [JsCallback] with the return type
   @override
-  external void onEvent(String eventType, JsCallback);
+  void onEvent(String eventType, JsCallback) => tg.onEvent(eventType, JsCallback);
 
   @override
-  external void offEvent(String eventType, JsCallback);
+  void offEvent(String eventType, JsCallback) => tg.offEvent(eventType, JsCallback);
 }

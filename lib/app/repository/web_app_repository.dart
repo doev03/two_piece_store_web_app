@@ -26,13 +26,13 @@ class WebAppRepositoryImpl implements WebAppRepository {
   WebAppThemeParams get themeParams {
     final dto = _remoteDataSource.themeParams;
     return WebAppThemeParams(
-      bgColor: dto.bg_color,
-      textColor: dto.text_color,
-      hintColor: dto.hint_color,
-      linkColor: dto.link_color,
-      buttonColor: dto.button_color,
-      buttonTextColor: dto.button_text_color,
-      secondaryBgColor: dto.secondary_bg_color,
+      bgColor: dto.bgColor,
+      textColor: dto.textColor,
+      hintColor: dto.hintColor,
+      linkColor: dto.linkColor,
+      buttonColor: dto.buttonColor,
+      buttonTextColor: dto.buttonTextColor,
+      secondaryBgColor: dto.secondaryBgColor,
     );
   }
 }

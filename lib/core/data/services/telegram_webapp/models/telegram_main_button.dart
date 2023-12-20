@@ -4,7 +4,7 @@ import 'package:js/js.dart';
 
 ///https://core.telegram.org/bots/webapps#mainbutton
 @JS()
-class TelegramMainButtonDTO {
+class TelegramMainButton {
   /// use these properties as getters or setters
   external String text;
   external String color;

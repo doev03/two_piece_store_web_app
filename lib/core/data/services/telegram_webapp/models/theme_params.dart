@@ -4,7 +4,7 @@ import 'package:js/js.dart';
 
 ///https://core.telegram.org/bots/webapps#themeparams
 @JS()
-class WebAppThemeParamsDTO {
+class WebAppThemeParams {
   external String get bg_color;
   external String get text_color;
   external String get hint_color;
