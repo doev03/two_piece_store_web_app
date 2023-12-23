@@ -1,0 +1,12 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        generate_for:
+          - "lib/**/data/dto/*.dart"
+      hive_generator:
+        generate_for:
+          - "lib/**/data/**.dart"
+      mockito|mockBuilder:
+        generate_for:
+          - "test/**.dart"
