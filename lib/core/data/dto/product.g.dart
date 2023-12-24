@@ -6,37 +6,28 @@ part of 'product.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductDTO _$ProductFromJson(Map<String, dynamic> json) => ProductDTO(
+ProductDTO _$ProductDTOFromJson(Map<String, dynamic> json) => ProductDTO(
+      attributes: (json['attributes'] as List<dynamic>)
+          .map((e) => ProductAttributeDTO.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      categoryId: json['categoryId'] as String,
       id: json['id'] as String,
+      images:
+          (json['images'] as List<dynamic>).map((e) => e as String).toList(),
+      joinName: json['joinName'] as String,
       name: json['name'] as String,
+      offerId: json['offerId'] as String,
       price: (json['price'] as num).toDouble(),
-      images: (json['images'] as List<dynamic>).map((e) => e as String).toList(),
-      variants: (json['variants'] as List<dynamic>).map((e) => e as String).toList(),
-      sizes: (json['sizes'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$ProductToJson(ProductDTO instance) => <String, dynamic>{
+Map<String, dynamic> _$ProductDTOToJson(ProductDTO instance) =>
+    <String, dynamic>{
+      'attributes': instance.attributes,
+      'categoryId': instance.categoryId,
       'id': instance.id,
-      'name': instance.name,
-      'price': instance.price,
       'images': instance.images,
-      'variants': instance.variants,
-      'sizes': instance.sizes,
+      'joinName': instance.joinName,
+      'name': instance.name,
+      'offerId': instance.offerId,
+      'price': instance.price,
     };
-
-ProductParameter _$ProductParameterFromJson(Map<String, dynamic> json) => ProductParameter(
-      type: $enumDecode(_$ProductParameterTypeEnumMap, json['type']),
-      title: json['title'] as String,
-      items: json['items'] as String,
-    );
-
-Map<String, dynamic> _$ProductParameterToJson(ProductParameter instance) => <String, dynamic>{
-      'type': _$ProductParameterTypeEnumMap[instance.type]!,
-      'title': instance.title,
-      'items': instance.items,
-    };
-
-const _$ProductParameterTypeEnumMap = {
-  ProductParameterType.string: 'string',
-  ProductParameterType.color: 'color',
-};

@@ -4,7 +4,7 @@ import '../../../../core/styles/colors.dart';
 import '../../../../core/styles/theme.dart';
 import '../../../../core/styles/typography.dart';
 import '../../../../core/utils/extensions.dart';
-import '../../../core/domain/entity/product.dart';
+import '../../domain/entity/catalog_item.dart';
 
 class CatalogItem extends StatelessWidget {
   const CatalogItem({
@@ -14,7 +14,7 @@ class CatalogItem extends StatelessWidget {
     super.key,
   });
 
-  final ProductEntity product;
+  final CatalogItemEntity product;
   final int count;
   final VoidCallback? onPressed;
 
@@ -77,10 +77,6 @@ class CatalogItem extends StatelessWidget {
                         ? null
                         : DecorationImage(
                             fit: BoxFit.cover,
-                            onError: (e, s) {
-                              print(e.runtimeType);
-                              print(s);
-                            },
                             image: NetworkImage(product.images.first),
                           ),
                   ),
@@ -91,11 +87,12 @@ class CatalogItem extends StatelessWidget {
                         alignment: Alignment.topLeft,
                         text: product.price.formatMoney(),
                       ),
-                      _buildInnerBox(
-                        context: context,
-                        alignment: Alignment.topRight,
-                        text: count.format(),
-                      )
+                      if (count > 0)
+                        _buildInnerBox(
+                          context: context,
+                          alignment: Alignment.topRight,
+                          text: count.format(),
+                        ),
                     ],
                   ),
                 );

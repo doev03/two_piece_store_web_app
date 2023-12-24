@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class PageBox extends StatelessWidget {
   const PageBox({
-    super.key,
     required this.child,
+    super.key,
   });
 
   final Widget child;

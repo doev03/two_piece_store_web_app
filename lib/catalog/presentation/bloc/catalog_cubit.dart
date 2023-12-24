@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../core/domain/entity/product.dart';
+import '../../domain/entity/catalog_item.dart';
 import '../../domain/usecase/get_products_list.dart';
 
 part 'catalog_state.dart';

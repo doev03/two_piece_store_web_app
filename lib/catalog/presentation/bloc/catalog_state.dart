@@ -17,7 +17,7 @@ final class CatalogSuccess extends CatalogState {
     required this.items,
   });
 
-  final List<ProductEntity> items;
+  final List<CatalogItemEntity> items;
 
   @override
   List<Object?> get props => [items];

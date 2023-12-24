@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../../core/data/dto/product.dart';
 
 // ignore: one_member_abstracts
@@ -5,11 +7,23 @@ abstract class CatalogRemoteDataSource {
   Future<List<ProductDTO>> getProductList();
 }
 
+class CatalogRemoteDataSourceImpl implements CatalogRemoteDataSource {
+  CatalogRemoteDataSourceImpl({required FirebaseFirestore firebaseFirestore})
+      : _db = firebaseFirestore;
+  final FirebaseFirestore _db;
+
+  @override
+  Future<List<ProductDTO>> getProductList() async {
+    final collection = await _db.collection('products').get();
+    return collection.docs.map((doc) => ProductDTO.fromJson(doc.data())).toList();
+  }
+}
+
 class CatalogRemoteDataSourceTest implements CatalogRemoteDataSource {
   @override
   Future<List<ProductDTO>> getProductList() async {
     return const [
-      ProductDTO(
+/*      ProductDTO(
         id: 'id_0',
         name: 'Футболка 0',
         price: 1500,
@@ -40,7 +54,7 @@ class CatalogRemoteDataSourceTest implements CatalogRemoteDataSource {
         images: ['http://localhost:8000/berserk.png'],
         variants: [],
         sizes: [],
-      ),
+      ),*/
     ];
   }
 }
