@@ -1,6 +1,14 @@
-import 'package:two_piece_store_web_app/app/app.dart';
-import 'package:two_piece_store_web_app/bootstrap.dart';
+import 'app/app.dart';
+import 'app/repository/web_app_repository.dart';
+import 'bootstrap.dart';
+import 'core/data/data_sources/telegram_web_app_remote_data_source_impl.dart';
 
 void main() {
-  bootstrap(() => const App());
+  bootstrap(
+    () => App(
+      webAppRepository: WebAppRepositoryImpl(
+        remoteDataSource: TelegramWebAppRemoteDataSourceImpl(),
+      ),
+    ),
+  );
 }

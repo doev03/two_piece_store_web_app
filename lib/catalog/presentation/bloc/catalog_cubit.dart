@@ -22,6 +22,7 @@ class CatalogCubit extends Cubit<CatalogState> {
       emit(CatalogSuccess(items: list));
     } catch (_) {
       emit(CatalogFailure());
+      rethrow;
     }
   }
 }

@@ -1,3 +1,4 @@
+const spacing6 = 24.0;
 const spacing5 = 16.0;
 const spacing4 = 12.0;
 const spacing3 = 8.0;

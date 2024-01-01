@@ -71,13 +71,13 @@ class CatalogItem extends StatelessWidget {
                   width: c.maxWidth,
                   clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
-                    color: product.images.isEmpty ? null : Colors.grey,
+                    color: Theme.of(context).colorScheme.secondary,
                     borderRadius: primaryBorderRadius,
                     image: product.images.isEmpty
                         ? null
                         : DecorationImage(
                             fit: BoxFit.cover,
-                            image: NetworkImage(product.images.first),
+                            image: product.images.first,
                           ),
                   ),
                   child: Stack(

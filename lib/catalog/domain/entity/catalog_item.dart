@@ -1,3 +1,5 @@
+import 'package:flutter/painting.dart';
+
 class CatalogItemEntity {
   const CatalogItemEntity({
     required this.categoryId,
@@ -9,7 +11,7 @@ class CatalogItemEntity {
 
   final String categoryId;
   final String id;
-  final List<String> images;
+  final List<ImageProvider> images;
   final String name;
   final double price;
 }
