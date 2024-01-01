@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../catalog/presentation/catalog_page.dart';
 import '../../core/data/data_sources/telegram_web_app_remote_data_source_impl.dart';
-import '../../core/data/data_sources/telegram_web_app_remote_data_source_test.dart';
 import '../../core/utils/extensions.dart';
 import '../../l10n/l10n.dart';
 import '../domain/usecase/get_web_app_theme_mode.dart';
@@ -19,7 +18,7 @@ class App extends StatelessWidget {
     return BlocProvider(
       create: (_) {
         final webAppRepository = WebAppRepositoryImpl(
-          remoteDataSource: TelegramWebAppRemoteDataSourceTest(),
+          remoteDataSource: TelegramWebAppRemoteDataSourceImpl(),
         );
         return AppCubit(
           getThemeMode: GetWebAppThemeMode(webAppRepository: webAppRepository),

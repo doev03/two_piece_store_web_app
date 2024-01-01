@@ -8,14 +8,19 @@ abstract class CatalogRemoteDataSource {
 }
 
 class CatalogRemoteDataSourceImpl implements CatalogRemoteDataSource {
-  CatalogRemoteDataSourceImpl({required FirebaseFirestore firebaseFirestore})
-      : _db = firebaseFirestore;
+  CatalogRemoteDataSourceImpl({
+    required FirebaseFirestore firebaseFirestore,
+  }) : _db = firebaseFirestore;
+
   final FirebaseFirestore _db;
 
   @override
   Future<List<ProductDTO>> getProductList() async {
     final collection = await _db.collection('products').get();
-    return collection.docs.map((doc) => ProductDTO.fromJson(doc.data())).toList();
+    return collection.docs
+        .map((doc) => ProductDTO.fromJson(doc.data()))
+        .expand((e) => List.filled(10, e))
+        .toList();
   }
 }
 
