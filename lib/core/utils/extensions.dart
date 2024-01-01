@@ -47,3 +47,7 @@ extension StringExtensions on String {
     }
   }
 }
+
+extension WhereNotNullIterableExtension<T extends Object> on Iterable<T?> {
+  Iterable<T> whereNotNull() => whereType<T>();
+}
