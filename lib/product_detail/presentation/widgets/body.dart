@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../catalog/presentation/widgets/native_scroll_builder.dart';
 import '../../../core/presentation/page_progress_indicator.dart';
 import '../../../core/styles/spacings.dart';
 import '../../../core/styles/typography.dart';
@@ -87,41 +88,46 @@ class ProductDetailPageBody extends StatelessWidget {
         const horizontalPadding = EdgeInsets.symmetric(horizontal: spacing5);
         const gap = SizedBox(height: spacing5);
 
-        return ListView(
-          children: [
-            gap,
-            ImagesCarousel(
-              horizontalSpacing: spacing5,
-              images: [product.images.first, product.images.first],
-            ),
-            gap,
-            Padding(
-              padding: horizontalPadding,
-              child: Text(
-                product.name,
-                style: AppTypography.title2.copyWith(color: colorScheme.onBackground),
-              ),
-            ),
-            gap,
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: horizontalPadding,
-                child: PriceBox(
-                  price: product.price,
+        return NativeScrollBuilder(
+          builder: (context, controller) {
+            return ListView(
+              controller: controller,
+              children: [
+                gap,
+                ImagesCarousel(
+                  horizontalSpacing: spacing5,
+                  images: [product.images.first, product.images.first],
                 ),
-              ),
-            ),
-            gap,
-            if (attributesMap != null && joinedProducts != null)
-              _buildVariableAttributes(
-                context: context,
-                product: product,
-                attributesMap: attributesMap,
-                joinedProducts: joinedProducts,
-              ),
-            const SizedBox(height: spacing3),
-          ],
+                gap,
+                Padding(
+                  padding: horizontalPadding,
+                  child: Text(
+                    product.name,
+                    style: AppTypography.title2.copyWith(color: colorScheme.onBackground),
+                  ),
+                ),
+                gap,
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: horizontalPadding,
+                    child: PriceBox(
+                      price: product.price,
+                    ),
+                  ),
+                ),
+                gap,
+                if (attributesMap != null && joinedProducts != null)
+                  _buildVariableAttributes(
+                    context: context,
+                    product: product,
+                    attributesMap: attributesMap,
+                    joinedProducts: joinedProducts,
+                  ),
+                const SizedBox(height: spacing3),
+              ],
+            );
+          },
         );
       },
     );
