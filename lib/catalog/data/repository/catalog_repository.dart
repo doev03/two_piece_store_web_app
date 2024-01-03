@@ -25,7 +25,7 @@ class CatalogRepositoryImpl implements CatalogRepository {
 
     return Future.wait(
       data.map((e) async {
-        final imageUrls = await _firebaseStorageDataSource.getImageUrls(e.images);
+        final imageUrls = await _firebaseStorageDataSource.getDownloadUrls(e.images);
         return CatalogItemEntity(
           categoryId: e.categoryId,
           id: e.id,

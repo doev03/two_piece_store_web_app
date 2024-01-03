@@ -27,7 +27,7 @@ class ProductDetailRepositoryImpl implements ProductDetailRepository {
   @override
   Future<ProductEntity> getProduct(String id) async {
     final data = await _remoteDataSource.getProduct(id);
-    final imageUrls = await _firebaseStorageDataSource.getImageUrls(data.images);
+    final imageUrls = await _firebaseStorageDataSource.getDownloadUrls(data.images);
     return ProductEntity(
       attributes: data.attributes
           .map((e) => AttributeParams(attributeId: e.attributeId, name: e.name))
@@ -63,7 +63,7 @@ class ProductDetailRepositoryImpl implements ProductDetailRepository {
     return Future.wait(
       list.map(
         (e) async {
-          final imageUrls = await _firebaseStorageDataSource.getImageUrls(e.images);
+          final imageUrls = await _firebaseStorageDataSource.getDownloadUrls(e.images);
           return ProductEntity(
             attributes: e.attributes
                 .map((e) => AttributeParams(attributeId: e.attributeId, name: e.name))

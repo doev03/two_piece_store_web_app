@@ -6,7 +6,7 @@ import '../../utils/extensions.dart';
 
 // ignore: one_member_abstracts
 abstract class FirebaseStorageDataSource {
-  Future<Iterable<String>> getImageUrls(List<String> paths);
+  Future<Iterable<String>> getDownloadUrls(List<String> paths);
 }
 
 class FirebaseStorageDataSourceImpl implements FirebaseStorageDataSource {
@@ -17,7 +17,7 @@ class FirebaseStorageDataSourceImpl implements FirebaseStorageDataSource {
   final FirebaseStorage _instance;
 
   @override
-  Future<Iterable<String>> getImageUrls(List<String> paths) async {
+  Future<Iterable<String>> getDownloadUrls(List<String> paths) async {
     final ref = _instance.ref();
 
     return Future.wait(
