@@ -4,8 +4,8 @@ class AppTypography {
 
   /// Title3/28px/Medium
   static const title3 = TextStyle(
-    fontSize: 28,
-    height: 33 / 28,
+    fontSize: 24,
+    height: 28 / 24,
     fontWeight: FontWeight.w500,
   );
 

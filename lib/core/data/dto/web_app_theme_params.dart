@@ -7,6 +7,7 @@ class WebAppThemeParamsDTO {
     required this.buttonColor,
     required this.buttonTextColor,
     required this.secondaryBgColor,
+    required this.accentTextColor,
   });
 
   final String bgColor;
@@ -16,4 +17,5 @@ class WebAppThemeParamsDTO {
   final String buttonColor;
   final String buttonTextColor;
   final String secondaryBgColor;
+  final String accentTextColor;
 }

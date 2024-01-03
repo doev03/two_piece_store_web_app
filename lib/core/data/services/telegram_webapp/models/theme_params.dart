@@ -12,4 +12,5 @@ class WebAppThemeParams {
   external String get button_color;
   external String get button_text_color;
   external String get secondary_bg_color;
+  external String get accent_text_color;
 }

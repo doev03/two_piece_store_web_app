@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/presentation/page_box.dart';
+import '../../core/data/data_sources/firebase_storage_data_source.dart';
 import '../data/data_sources/catalog_remote_data_source.dart';
 import '../data/repository/catalog_repository.dart';
 import '../domain/usecase/get_products_list.dart';
@@ -18,7 +20,11 @@ class CatalogPage extends StatelessWidget {
       create: (_) => CatalogCubit(
         getProductsList: GetProductsList(
           catalogRepository: CatalogRepositoryImpl(
-            remoteDataSource: CatalogRemoteDataSourceImpl(firebaseFirestore: FirebaseFirestore.instance),
+            remoteDataSource:
+                CatalogRemoteDataSourceImpl(firebaseFirestore: FirebaseFirestore.instance),
+            firebaseStorageDataSource: FirebaseStorageDataSourceImpl(
+              instance: FirebaseStorage.instance,
+            ),
           ),
         ),
       ),
@@ -43,8 +49,6 @@ class _CatalogViewState extends State<CatalogView> {
 
   @override
   Widget build(BuildContext context) {
-    return const PageBox(
-      child: Body(),
-    );
+    return const PageBox(child: CatalogPageBody());
   }
 }

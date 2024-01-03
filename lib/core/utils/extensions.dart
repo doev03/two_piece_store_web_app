@@ -51,3 +51,8 @@ extension StringExtensions on String {
 extension WhereNotNullIterableExtension<T extends Object> on Iterable<T?> {
   Iterable<T> whereNotNull() => whereType<T>();
 }
+
+Future<(T1, T2)> futureWait2<T1, T2>(Future<T1> future1, Future<T2> future2) async {
+  final res = await Future.wait([future1, future2]);
+  return (res[0] as T1, res[1] as T2);
+}

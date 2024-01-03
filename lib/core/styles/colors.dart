@@ -18,4 +18,12 @@ class AppColors {
   static const blackAlpha10 = Color(0x1A000000);
   static const blackAlpha5 = Color(0x0D000000);
   static const blackAlpha3 = Color(0x08000000);
+
+  //White
+  static const white1 = Color(0xFFFFFFFF);
+  static const whiteAlpha80 = Color(0xCCFFFFFF);
+  static const whiteAlpha40 = Color(0x66FFFFFF);
+  static const whiteAlpha35 = Color(0x59FFFFFF);
+  static const whiteAlpha25 = Color(0x40FFFFFF);
+  static const whiteAlpha1 = Color(0x03FFFFFF);
 }

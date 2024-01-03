@@ -50,7 +50,7 @@ class CatalogItem extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: AppTypography.caption3,
+          style: AppTypography.caption3.copyWith(color: AppColors.white1),
         ),
       ),
     );
@@ -58,6 +58,9 @@ class CatalogItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return GestureDetector(
       onTap: onPressed,
       child: Column(
@@ -76,9 +79,9 @@ class CatalogItem extends StatelessWidget {
                     image: product.images.isEmpty
                         ? null
                         : DecorationImage(
-                            fit: BoxFit.cover,
-                            image: product.images.first,
-                          ),
+                      fit: BoxFit.cover,
+                      image: product.images.first,
+                    ),
                   ),
                   child: Stack(
                     children: [
@@ -102,7 +105,7 @@ class CatalogItem extends StatelessWidget {
           const SizedBox(height: 4),
           Text(
             product.name,
-            style: AppTypography.headline2,
+            style: AppTypography.headline2.copyWith(color: colorScheme.onBackground),
             textAlign: TextAlign.center,
           ),
         ],

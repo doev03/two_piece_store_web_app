@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:js/js.dart';
-import 'package:native_scroll/native_scroll.dart';
 
 import '../../../../core/styles/spacings.dart';
+import '../../../product_detail/presentation/product_detail_page.dart';
 import '../../domain/entity/catalog_item.dart';
 import 'catalog_item.dart';
+import 'native_scroll_builder.dart';
 
 @JS()
 @staticInterop
@@ -42,7 +43,14 @@ class CatalogGrid extends StatelessWidget {
 
             return CatalogItem(
               product: item,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push<void>(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ProductDetailPage(id: item.id),
+                  ),
+                );
+              },
             );
           },
         );

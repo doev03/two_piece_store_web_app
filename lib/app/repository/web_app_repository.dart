@@ -33,6 +33,7 @@ class WebAppRepositoryImpl implements WebAppRepository {
       buttonColor: dto.buttonColor,
       buttonTextColor: dto.buttonTextColor,
       secondaryBgColor: dto.secondaryBgColor,
+      accentTextColor: dto.accentTextColor,
     );
   }
 }

@@ -156,13 +156,14 @@ class TelegramWebAppRemoteDataSourceTest implements TelegramWebAppRemoteDataSour
   @override
   // TODO: implement themeParams
   WebAppThemeParamsDTO get themeParams => WebAppThemeParamsDTO(
-        bgColor: '#17212B',
-        secondaryBgColor: '#232E3C',
-        textColor: '#ffffff',
-        hintColor: '#7d8b99',
-        linkColor: '#5eabe1',
-        buttonColor: '#5288c1',
-        buttonTextColor: '#ffffff',
+        bgColor: '#212D3B',
+        secondaryBgColor: '#151E27',
+        textColor: '#FFFFFF',
+        hintColor: '#7D8B99',
+        linkColor: '#5EABE1',
+        buttonColor: '#5288C1',
+        buttonTextColor: '#FFFFFF',
+        accentTextColor: '#64B5EF',
       );
 
   @override

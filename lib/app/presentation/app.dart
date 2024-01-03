@@ -83,6 +83,7 @@ class AppView extends StatelessWidget {
                   onBackground: themeParams.textColor.toColor(),
                   surface: themeParams.secondaryBgColor.toColor(),
                   onSurface: themeParams.textColor.toColor(),
+                  tertiary: themeParams.hintColor.toColor(),
                 ),
                 primaryColor: themeParams.buttonColor.toColor(),
                 scaffoldBackgroundColor: themeParams.bgColor.toColor(),

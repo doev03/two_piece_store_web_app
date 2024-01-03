@@ -6,8 +6,8 @@ import '../../../core/presentation/page_progress_indicator.dart';
 import '../bloc/catalog_cubit.dart';
 import 'catalog_grid.dart';
 
-class Body extends StatelessWidget {
-  const Body({
+class CatalogPageBody extends StatelessWidget {
+  const CatalogPageBody({
     super.key,
   });
 

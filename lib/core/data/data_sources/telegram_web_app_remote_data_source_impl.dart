@@ -48,6 +48,7 @@ class TelegramWebAppRemoteDataSourceImpl implements TelegramWebAppRemoteDataSour
       buttonColor: data.button_color,
       buttonTextColor: data.button_text_color,
       secondaryBgColor: data.secondary_bg_color,
+      accentTextColor: data.accent_text_color,
     );
   }
 
