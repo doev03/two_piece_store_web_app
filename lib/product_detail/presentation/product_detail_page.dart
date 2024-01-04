@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +13,11 @@ import '../domain/usecase/get_products_by_join_name.dart';
 import 'bloc/product_detail_bloc.dart';
 import 'widgets/body.dart';
 
+@RoutePage()
 class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({
-    required this.id,
-    super.key,
-  });
+  ProductDetailPage({
+    @PathParam('id') required this.id,
+  }) : super(key: ValueKey(id));
 
   final String id;
 

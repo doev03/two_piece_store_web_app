@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../catalog/presentation/catalog_page.dart';
-import '../../core/data/data_sources/telegram_web_app_remote_data_source_test.dart';
 import '../../core/utils/extensions.dart';
 import '../../l10n/l10n.dart';
+import '../../router/app_router.dart';
 import '../domain/usecase/get_web_app_theme_mode.dart';
 import '../domain/usecase/get_web_app_theme_params.dart';
 import '../repository/web_app_repository.dart';
@@ -27,13 +26,15 @@ class App extends StatelessWidget {
           getThemeParams: GetWebAppThemeParams(webAppRepository: webAppRepository),
         );
       },
-      child: const AppView(),
+      child: AppView(),
     );
   }
 }
 
 class AppView extends StatelessWidget {
-  const AppView({super.key});
+  AppView({super.key});
+
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ class AppView extends StatelessWidget {
         switch (state) {
           case AppInitial():
             final themeParams = state.themeParams;
-            return MaterialApp(
+            return MaterialApp.router(
               debugShowCheckedModeBanner: false,
               theme: ThemeData.light().copyWith(
                 primaryColor: themeParams.buttonColor.toColor(),
@@ -113,7 +114,7 @@ class AppView extends StatelessWidget {
               themeMode: state.themeMode,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
-              home: const CatalogPage(),
+              routerConfig: _appRouter.config(),
             );
         }
       },

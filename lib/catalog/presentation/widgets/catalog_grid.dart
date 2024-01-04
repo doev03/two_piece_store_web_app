@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:js/js.dart';
 
 import '../../../../core/styles/spacings.dart';
-import '../../../product_detail/presentation/product_detail_page.dart';
+import '../../../router/app_router.dart';
 import '../../domain/entity/catalog_item.dart';
 import 'catalog_item.dart';
 import 'native_scroll_builder.dart';
@@ -13,6 +14,7 @@ class JSWindow {}
 
 extension JSWindowExtension on JSWindow {
   external String get name;
+
   String get nameAllCaps => name.toUpperCase();
 }
 
@@ -44,12 +46,7 @@ class CatalogGrid extends StatelessWidget {
             return CatalogItem(
               product: item,
               onPressed: () {
-                Navigator.push<void>(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ProductDetailPage(id: item.id),
-                  ),
-                );
+                context.navigateTo(ProductDetailRoute(id: item.id));
               },
             );
           },

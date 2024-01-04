@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import '../domain/usecase/get_products_list.dart';
 import 'bloc/catalog_cubit.dart';
 import 'widgets/body.dart';
 
+@RoutePage()
 class CatalogPage extends StatelessWidget {
   const CatalogPage({super.key});
 

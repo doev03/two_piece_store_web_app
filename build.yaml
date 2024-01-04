@@ -4,9 +4,9 @@ targets:
       json_serializable:
         generate_for:
           - "lib/**/data/dto/*.dart"
-      hive_generator:
+      auto_route_generator:auto_route_generator:
         generate_for:
-          - "lib/**/data/**.dart"
-      mockito|mockBuilder:
+          - lib/**/presentation/*.dart
+      auto_route_generator:auto_router_generator:
         generate_for:
-          - "test/**.dart"
+          - lib/router/*.dart

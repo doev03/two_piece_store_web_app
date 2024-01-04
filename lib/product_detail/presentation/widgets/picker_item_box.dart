@@ -19,18 +19,23 @@ class PickerItemBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    const borderWidth = spacing1;
+
     return Material(
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: primaryBorderRadius,
         side: BorderSide(
           color: selected ? theme.colorScheme.primary : theme.colorScheme.tertiary,
-          width: spacing1,
+          width: borderWidth,
         ),
       ),
       child: GestureDetector(
         onTap: onPressed,
-        child: child,
+        child: Padding(
+          padding: const EdgeInsets.all(borderWidth),
+          child: child,
+        ),
       ),
     );
   }

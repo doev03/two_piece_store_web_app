@@ -28,6 +28,6 @@ Map<String, dynamic> _$ProductDTOToJson(ProductDTO instance) =>
       'images': instance.images,
       'joinName': instance.joinName,
       'name': instance.name,
-       'offerId': instance.offerId,
+      'offerId': instance.offerId,
       'price': instance.price,
     };
