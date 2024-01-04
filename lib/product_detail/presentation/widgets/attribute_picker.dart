@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:native_scroll/native_scroll.dart';
 
 import '../../../core/styles/spacings.dart';
 import '../../../core/styles/typography.dart';

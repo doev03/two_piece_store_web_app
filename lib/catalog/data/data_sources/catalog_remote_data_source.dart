@@ -19,7 +19,6 @@ class CatalogRemoteDataSourceImpl implements CatalogRemoteDataSource {
     final collection = await _db.collection('products').get();
     return collection.docs
         .map((doc) => ProductDTO.fromJson(doc.data()))
-        .expand((e) => List.filled(10, e))
         .toList();
   }
 }

@@ -517,14 +517,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
-  native_scroll:
-    dependency: "direct main"
-    description:
-      name: native_scroll
-      sha256: a2d8dab03ade82d5ecbd6deb5eaf07ca5419ef37ef3c692c8808c11b9b0d1705
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1"
   nested:
     dependency: transitive
     description:
