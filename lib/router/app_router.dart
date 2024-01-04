@@ -9,7 +9,8 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(path: '/catalog', page: CatalogRoute.page, initial: true),
-        AutoRoute(path: '/product/:id', page: ProductDetailRoute.page),
-      ];
+    AutoRoute(path: '/', page: CatalogRoute.page),
+    AutoRoute(path: '/product/:id', page: ProductDetailRoute.page),
+    RedirectRoute(path: '*', redirectTo: '/'),
+  ];
 }
