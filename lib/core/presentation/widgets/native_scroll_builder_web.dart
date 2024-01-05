@@ -1,3 +1,4 @@
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
 import 'dart:ui_web' as ui;
 
@@ -46,6 +47,7 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
           ..onScroll.listen((event) {
             final target = event.target! as DivElement;
             _onNativeScroll(target.scrollTop);
+            event.stopPropagation();
           })
           ..append(_heightDiv);
       },
@@ -98,11 +100,11 @@ class _NativeScrollBuilderState extends State<NativeScrollBuilder> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        HtmlElementView(viewType: _viewId),
         ScrollConfiguration(
           behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
           child: widget.builder(context, _scrollController),
         ),
-        IgnorePointer(child: HtmlElementView(viewType: _viewId)),
       ],
     );
   }

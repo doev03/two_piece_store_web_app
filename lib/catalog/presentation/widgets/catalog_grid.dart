@@ -1,22 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:js/js.dart';
 
 import '../../../../core/styles/spacings.dart';
+import '../../../core/presentation/widgets/adaptive_scroll_builder.dart';
 import '../../../router/app_router.dart';
 import '../../domain/entity/catalog_item.dart';
 import 'catalog_item.dart';
-import 'native_scroll_builder.dart';
-
-@JS()
-@staticInterop
-class JSWindow {}
-
-extension JSWindowExtension on JSWindow {
-  external String get name;
-
-  String get nameAllCaps => name.toUpperCase();
-}
 
 class CatalogGrid extends StatelessWidget {
   const CatalogGrid({
@@ -28,7 +17,7 @@ class CatalogGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NativeScrollBuilder(
+    return AdaptiveScrollBuilder(
       builder: (context, controller) {
         return GridView.builder(
           controller: controller,

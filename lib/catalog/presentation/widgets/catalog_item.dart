@@ -61,54 +61,57 @@ class CatalogItem extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    return GestureDetector(
-      onTap: onPressed,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Expanded(
-            child: LayoutBuilder(
-              builder: (context, c) {
-                return Container(
-                  height: c.maxHeight,
-                  width: c.maxWidth,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: primaryBorderRadius,
-                    image: product.images.isEmpty
-                        ? null
-                        : DecorationImage(
-                      fit: BoxFit.cover,
-                      image: product.images.first,
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      _buildInnerBox(
-                        context: context,
-                        alignment: Alignment.topLeft,
-                        text: product.price.formatMoney(),
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(
+              child: LayoutBuilder(
+                builder: (context, c) {
+                  return Container(
+                    height: c.maxHeight,
+                    width: c.maxWidth,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: primaryBorderRadius,
+                      image: product.images.isEmpty
+                          ? null
+                          : DecorationImage(
+                        fit: BoxFit.cover,
+                        image: product.images.first,
                       ),
-                      if (count > 0)
+                    ),
+                    child: Stack(
+                      children: [
                         _buildInnerBox(
                           context: context,
-                          alignment: Alignment.topRight,
-                          text: count.format(),
+                          alignment: Alignment.topLeft,
+                          text: product.price.formatMoney(),
                         ),
-                    ],
-                  ),
-                );
-              },
+                        if (count > 0)
+                          _buildInnerBox(
+                            context: context,
+                            alignment: Alignment.topRight,
+                            text: count.format(),
+                          ),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            product.name,
-            style: AppTypography.headline2.copyWith(color: colorScheme.onBackground),
-            textAlign: TextAlign.center,
-          ),
-        ],
+            const SizedBox(height: 4),
+            Text(
+              product.name,
+              style: AppTypography.headline2.copyWith(color: colorScheme.onBackground),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../catalog/presentation/widgets/native_scroll_builder.dart';
 import '../../../core/presentation/page_progress_indicator.dart';
+import '../../../core/presentation/widgets/adaptive_scroll_builder.dart';
 import '../../../core/styles/spacings.dart';
 import '../../../core/styles/typography.dart';
 import '../../domain/entity/attribute.dart';
@@ -88,7 +88,7 @@ class ProductDetailPageBody extends StatelessWidget {
         const horizontalPadding = EdgeInsets.symmetric(horizontal: spacing5);
         const gap = SizedBox(height: spacing5);
 
-        return NativeScrollBuilder(
+        return AdaptiveScrollBuilder(
           builder: (context, controller) {
             return ListView(
               controller: controller,

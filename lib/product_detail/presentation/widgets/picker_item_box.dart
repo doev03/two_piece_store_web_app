@@ -30,7 +30,7 @@ class PickerItemBox extends StatelessWidget {
           width: borderWidth,
         ),
       ),
-      child: GestureDetector(
+      child: InkWell(
         onTap: onPressed,
         child: Padding(
           padding: const EdgeInsets.all(borderWidth),
