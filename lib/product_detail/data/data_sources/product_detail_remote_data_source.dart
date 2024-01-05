@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../../core/data/dto/product.dart';
 import '../dto/attribute.dart';
-import '../dto/product.dart';
 
 abstract class ProductDetailRemoteDataSource {
   Future<ProductDTO> getProduct(String id);
