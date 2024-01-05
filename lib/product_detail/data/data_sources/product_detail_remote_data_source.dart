@@ -25,11 +25,7 @@ class ProductDetailRemoteDataSourceImpl implements ProductDetailRemoteDataSource
     if (docJson == null) {
       throw Exception('Товара не существует');
     }
-    final productDTO = ProductDTO.fromJson(docJson);
-
-    ((docJson['attributes'] as List<dynamic>)[0] as Map<String, dynamic>)['name'] = 'черный';
-    docJson['offerId'] = 'tshirt_zoroanddragon_black_50';
-    return productDTO;
+    return ProductDTO.fromJson(docJson);
   }
 
   @override
