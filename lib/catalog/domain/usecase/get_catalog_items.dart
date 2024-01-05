@@ -2,8 +2,8 @@ import '../../../core/utils/usecase.dart';
 import '../../data/repository/catalog_repository.dart';
 import '../entity/catalog_item.dart';
 
-class GetProductsList extends UseCase<List<CatalogItemEntity>, void> {
-  GetProductsList({
+class GetCatalogItems extends UseCase<List<CatalogItemEntity>, void> {
+  GetCatalogItems({
     required CatalogRepository catalogRepository,
   }) : _catalogRepository = catalogRepository;
 
@@ -11,8 +11,8 @@ class GetProductsList extends UseCase<List<CatalogItemEntity>, void> {
 
   @override
   Future<List<CatalogItemEntity>> call(void params) {
-    return _catalogRepository.getProductsList();
+    return _catalogRepository.getCatalogItems();
   }
 }
 
-class GetProductsListParams {}
+class GetCatalogItemsParams {}

@@ -22,4 +22,8 @@ class ProductEntity {
   final String name;
   final String offerId;
   final double price;
+
+  AttributeParams getAttributeById(String id) {
+    return attributes.firstWhere((e) => e.attributeId == id);
+  }
 }

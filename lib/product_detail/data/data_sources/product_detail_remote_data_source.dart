@@ -31,7 +31,11 @@ class ProductDetailRemoteDataSourceImpl implements ProductDetailRemoteDataSource
   @override
   Future<List<AttributeDTO>> getAttributes(List<String> ids) async {
     final collection = await _db.collection('attributes').get();
-    return collection.docs.map((e) => AttributeDTO.fromJson(e.data())).toList();
+    return collection.docs.map((e) {
+      final json = e.data();
+      json['id'] = e.id;
+      return AttributeDTO.fromJson(json);
+    }).toList();
   }
 
   @override

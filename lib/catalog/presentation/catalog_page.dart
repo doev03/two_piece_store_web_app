@@ -8,7 +8,7 @@ import '../../../core/presentation/page_box.dart';
 import '../../core/data/data_sources/firebase_storage_data_source.dart';
 import '../data/data_sources/catalog_remote_data_source.dart';
 import '../data/repository/catalog_repository.dart';
-import '../domain/usecase/get_products_list.dart';
+import '../domain/usecase/get_catalog_items.dart';
 import 'bloc/catalog_cubit.dart';
 import 'widgets/body.dart';
 
@@ -20,7 +20,7 @@ class CatalogPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => CatalogCubit(
-        getProductsList: GetProductsList(
+        getCatalogItems: GetCatalogItems(
           catalogRepository: CatalogRepositoryImpl(
             remoteDataSource:
                 CatalogRemoteDataSourceImpl(firebaseFirestore: FirebaseFirestore.instance),
@@ -46,7 +46,7 @@ class _CatalogViewState extends State<CatalogView> {
   @override
   void initState() {
     super.initState();
-    context.read<CatalogCubit>().fetchProductsList();
+    context.read<CatalogCubit>().fetchCatalogItems();
   }
 
   @override

@@ -1,12 +1,13 @@
 import 'package:flutter/painting.dart';
 
 import '../../../core/data/data_sources/firebase_storage_data_source.dart';
+import '../../../core/data/dto/product.dart';
 import '../../domain/entity/catalog_item.dart';
 import '../data_sources/catalog_remote_data_source.dart';
 
 // ignore: one_member_abstracts
 abstract class CatalogRepository {
-  Future<List<CatalogItemEntity>> getProductsList();
+  Future<List<CatalogItemEntity>> getCatalogItems();
 }
 
 class CatalogRepositoryImpl implements CatalogRepository {
@@ -20,11 +21,13 @@ class CatalogRepositoryImpl implements CatalogRepository {
   final FirebaseStorageDataSource _firebaseStorageDataSource;
 
   @override
-  Future<List<CatalogItemEntity>> getProductsList() async {
-    final data = await _remoteDataSource.getProductList();
+  Future<List<CatalogItemEntity>> getCatalogItems() async {
+    final allProducts = await _remoteDataSource.getProducts();
+
+    final resultProducts = _getProductsWithUniqueImages(allProducts);
 
     return Future.wait(
-      data.map((e) async {
+      resultProducts.map((e) async {
         final imageUrls = await _firebaseStorageDataSource.getDownloadUrls(e.images);
         return CatalogItemEntity(
           categoryId: e.categoryId,
@@ -35,5 +38,20 @@ class CatalogRepositoryImpl implements CatalogRepository {
         );
       }),
     );
+  }
+
+  List<ProductDTO> _getProductsWithUniqueImages(List<ProductDTO> list) {
+    final result = <ProductDTO>[];
+    final imageSet = <String>{};
+    for (final item in list) {
+      final imagesString = item.images.toString();
+      if (imageSet.contains(imagesString)) {
+        continue;
+      } else {
+        result.add(item);
+        imageSet.add(imagesString);
+      }
+    }
+    return result;
   }
 }

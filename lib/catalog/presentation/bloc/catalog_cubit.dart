@@ -2,23 +2,23 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../domain/entity/catalog_item.dart';
-import '../../domain/usecase/get_products_list.dart';
+import '../../domain/usecase/get_catalog_items.dart';
 
 part 'catalog_state.dart';
 
 class CatalogCubit extends Cubit<CatalogState> {
   CatalogCubit({
-    required GetProductsList getProductsList,
-  }) : _getProductsList = getProductsList, super(CatalogInitial());
+    required GetCatalogItems getCatalogItems,
+  }) : _getCatalogItems = getCatalogItems, super(CatalogInitial());
 
-  final GetProductsList _getProductsList;
+  final GetCatalogItems _getCatalogItems;
 
-  Future<void> fetchProductsList() async {
+  Future<void> fetchCatalogItems() async {
     if (state is CatalogInProgress) return;
     emit(CatalogInProgress());
 
     try {
-      final list = await _getProductsList(GetProductsListParams());
+      final list = await _getCatalogItems(GetCatalogItemsParams());
       emit(CatalogSuccess(items: list));
     } catch (_) {
       emit(CatalogFailure());

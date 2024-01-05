@@ -44,7 +44,7 @@ class ProductDetailPageBody extends StatelessWidget {
             heading: '${attribute.name}: ${params.name}',
             children: List.generate(joinedProducts.length, (index) {
               final item = joinedProducts[index];
-              final attrParams = item.attributes.firstWhere((e) => e.attributeId == attribute.id);
+              final attrParams = item.getAttributeById(attribute.id);
               final selected = product.offerId == item.offerId;
 
               switch (attribute.pickerType) {
