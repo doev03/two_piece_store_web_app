@@ -17,13 +17,19 @@ import 'text_picker_item.dart';
 class ProductDetailPageBody extends StatelessWidget {
   const ProductDetailPageBody({super.key});
 
+  void _selectAttribute(BuildContext context, ProductEntity selectedProduct) {
+    context.read<ProductDetailBloc>().add(
+          ProductDetailAttributeChanged(selectedProduct: selectedProduct),
+        );
+  }
+
   Widget _buildVariableAttributes({
     required BuildContext context,
     required ProductEntity product,
     required Map<String, AttributeEntity> attributesMap,
     required List<ProductEntity> joinedProducts,
   }) {
-    final visibleAttributes = product.attributes.where(
+    final productVariableAttributes = product.attributes.where(
       (attrParams) {
         final attribute = attributesMap[attrParams.attributeId];
         return attribute != null &&
@@ -34,31 +40,70 @@ class ProductDetailPageBody extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: visibleAttributes.map((params) {
-        final attribute = attributesMap[params.attributeId]!;
+      children: productVariableAttributes.map((productAttribute) {
+        final productAttributeInfo = attributesMap[productAttribute.attributeId]!;
+
+        final products = <ProductEntity>[];
+        for (final item in joinedProducts) {
+          if (item.id == product.id) {
+            products.add(item);
+            continue;
+          }
+
+          // Добавляет товар в список, если выполняются следующие условия:
+          // * значение атрибута c id равным [productAttribute.attributeId] текущего товара отличается от значения атрибута объединенного товара [item].
+          // * все остальные атрибуты текущего товара равны соответствующим аттрибутам объединенного товара.
+          void addProductWithSameAttributes() {
+            for (final itemAttr in item.attributes) {
+              if (itemAttr.attributeId == productAttribute.attributeId) {
+                if (itemAttr.name == productAttribute.name) {
+                  return;
+                }
+              } else {
+                if (itemAttr.name != product.getAttributeById(itemAttr.attributeId).name) {
+                  return;
+                }
+              }
+            }
+            products.add(item);
+          }
+
+          addProductWithSameAttributes();
+        }
+
+        products.sort(
+          (a, b) => a
+              .getAttributeById(productAttribute.attributeId)
+              .name
+              .compareTo(b.getAttributeById(productAttribute.attributeId).name),
+        );
 
         return Padding(
           padding: const EdgeInsets.only(bottom: spacing3),
           child: AttributePicker(
             horizontalSpacing: spacing5,
-            heading: '${attribute.name}: ${params.name}',
-            children: List.generate(joinedProducts.length, (index) {
-              final item = joinedProducts[index];
-              final attrParams = item.getAttributeById(attribute.id);
+            heading: '${productAttributeInfo.name}: ${productAttribute.name}',
+            children: List.generate(products.length, (index) {
+              final item = products[index];
+              final attrParams = item.getAttributeById(productAttributeInfo.id);
               final selected = product.offerId == item.offerId;
 
-              switch (attribute.pickerType) {
+              switch (productAttributeInfo.pickerType) {
                 case AttributePickerType.text:
                   return TextPickerItem(
                     attrParams.name,
                     selected: selected,
-                    onPressed: () {},
+                    onPressed: () {
+                      _selectAttribute(context, item);
+                    },
                   );
                 case AttributePickerType.image:
                   return ImagePickerItem(
                     item.images.first,
                     selected: selected,
-                    onPressed: () {},
+                    onPressed: () {
+                      _selectAttribute(context, item);
+                    },
                   );
                 case AttributePickerType.other:
                   throw UnimplementedError();

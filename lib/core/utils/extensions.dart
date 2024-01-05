@@ -52,6 +52,12 @@ extension WhereNotNullIterableExtension<T extends Object> on Iterable<T?> {
   Iterable<T> whereNotNull() => whereType<T>();
 }
 
+extension IterableExtensions<T extends Object> on Iterable<T> {
+  Map<KeyType, T> toMap<KeyType>(KeyType Function(T e) convertToKey) {
+    return { for (final item in this) convertToKey(item): item};
+  }
+}
+
 Future<(T1, T2)> futureWait2<T1, T2>(Future<T1> future1, Future<T2> future2) async {
   final res = await Future.wait([future1, future2]);
   return (res[0] as T1, res[1] as T2);

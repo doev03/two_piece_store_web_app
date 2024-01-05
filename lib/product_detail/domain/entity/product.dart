@@ -1,9 +1,10 @@
 import 'package:flutter/painting.dart';
 
+import '../../../core/utils/extensions.dart';
 import 'attribute_params.dart';
 
 class ProductEntity {
-  const ProductEntity({
+  ProductEntity({
     required this.attributes,
     required this.categoryId,
     required this.id,
@@ -12,7 +13,7 @@ class ProductEntity {
     required this.name,
     required this.offerId,
     required this.price,
-  });
+  }) : _attributesMap = attributes.toMap((e) => e.attributeId);
 
   final List<AttributeParams> attributes;
   final String categoryId;
@@ -23,7 +24,7 @@ class ProductEntity {
   final String offerId;
   final double price;
 
-  AttributeParams getAttributeById(String id) {
-    return attributes.firstWhere((e) => e.attributeId == id);
-  }
+  final Map<String, AttributeParams> _attributesMap;
+
+  AttributeParams getAttributeById(String id) => _attributesMap[id]!;
 }
