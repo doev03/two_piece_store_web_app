@@ -4,7 +4,6 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
-import 'package:url_strategy/url_strategy.dart';
 
 import 'firebase_options.dart';
 
@@ -38,8 +37,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  setPathUrlStrategy();
 
   runApp(await builder());
 }
