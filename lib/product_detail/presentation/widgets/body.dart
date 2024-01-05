@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,6 +6,7 @@ import '../../../core/presentation/page_progress_indicator.dart';
 import '../../../core/presentation/widgets/adaptive_scroll_builder.dart';
 import '../../../core/styles/spacings.dart';
 import '../../../core/styles/typography.dart';
+import '../../../router/app_router.dart';
 import '../../domain/entity/attribute.dart';
 import '../../domain/entity/product.dart';
 import '../bloc/product_detail_bloc.dart';
@@ -18,9 +20,7 @@ class ProductDetailPageBody extends StatelessWidget {
   const ProductDetailPageBody({super.key});
 
   void _selectAttribute(BuildContext context, ProductEntity selectedProduct) {
-    context.read<ProductDetailBloc>().add(
-          ProductDetailAttributeChanged(selectedProduct: selectedProduct),
-        );
+    context.navigateTo(ProductDetailRoute(id: selectedProduct.id));
   }
 
   Widget _buildVariableAttributes({

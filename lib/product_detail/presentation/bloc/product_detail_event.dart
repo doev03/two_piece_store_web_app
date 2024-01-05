@@ -7,9 +7,3 @@ class ProductDetailPageInit extends ProductDetailEvent {
 
   final String productId;
 }
-
-class ProductDetailAttributeChanged extends ProductDetailEvent {
-  ProductDetailAttributeChanged({required this.selectedProduct});
-
-  final ProductEntity selectedProduct;
-}

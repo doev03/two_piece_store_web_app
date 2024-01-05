@@ -50,11 +50,4 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
       ),
     );
   }
-
-  Future<void> _onProductDetailAttributeChanged(
-    ProductDetailAttributeChanged event,
-    Emitter<ProductDetailState> emit,
-  ) async {
-    emit(state.copyWith(product: event.selectedProduct));
-  }
 }
