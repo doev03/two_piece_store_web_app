@@ -13,6 +13,7 @@ class AdaptiveScrollBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(defaultTargetPlatform);
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
