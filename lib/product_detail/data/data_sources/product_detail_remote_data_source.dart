@@ -25,6 +25,7 @@ class ProductDetailRemoteDataSourceImpl implements ProductDetailRemoteDataSource
     if (docJson == null) {
       throw Exception('Товара не существует');
     }
+    docJson['id'] = doc.id;
     return ProductDTO.fromJson(docJson);
   }
 
@@ -47,6 +48,10 @@ class ProductDetailRemoteDataSourceImpl implements ProductDetailRemoteDataSource
           isEqualTo: joinName,
         )
         .get();
-    return collection.docs.map((e) => ProductDTO.fromJson(e.data())).toList();
+    return collection.docs.map((doc) {
+      final json = doc.data();
+      json['id'] = doc.id;
+      return ProductDTO.fromJson(json);
+    }).toList();
   }
 }
