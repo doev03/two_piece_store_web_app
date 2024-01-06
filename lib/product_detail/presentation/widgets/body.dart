@@ -137,6 +137,7 @@ class ProductDetailPageBody extends StatelessWidget {
           builder: (context, controller) {
             return ListView(
               controller: controller,
+              physics: controller == null ? null : const NeverScrollableScrollPhysics(),
               children: [
                 gap,
                 ImagesCarousel(

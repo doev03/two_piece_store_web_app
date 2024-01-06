@@ -14,5 +14,3 @@ class GetCatalogItems extends UseCase<List<CatalogItemEntity>, void> {
     return _catalogRepository.getCatalogItems();
   }
 }
-
-class GetCatalogItemsParams {}

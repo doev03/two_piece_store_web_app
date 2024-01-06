@@ -21,6 +21,7 @@ class CatalogGrid extends StatelessWidget {
       builder: (context, controller) {
         return GridView.builder(
           controller: controller,
+          physics: controller == null ? null : const NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.all(spacing5),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,

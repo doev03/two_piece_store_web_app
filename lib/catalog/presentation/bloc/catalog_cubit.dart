@@ -18,7 +18,7 @@ class CatalogCubit extends Cubit<CatalogState> {
     emit(CatalogInProgress());
 
     try {
-      final list = await _getCatalogItems(GetCatalogItemsParams());
+      final list = await _getCatalogItems(null);
       emit(CatalogSuccess(items: list));
     } catch (_) {
       emit(CatalogFailure());
